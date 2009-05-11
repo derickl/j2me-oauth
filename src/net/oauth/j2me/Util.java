@@ -157,7 +157,7 @@ public class Util {
         // TODO -- better way to handle unexpected responses
         try {
             System.out.println("UTIL -- posting to "+urlPieces[0]);
-            c = (HttpsConnection)Connector.open(fullUrl, Connector.READ_WRITE); // hack for emulator?
+            c = (HttpsConnection)Connector.open(urlPieces[0], Connector.READ_WRITE); // hack for emulator?
             
             // Set the request method and headers
             c.setRequestMethod(HttpConnection.POST);
@@ -170,7 +170,7 @@ public class Util {
             os = c.openOutputStream();
             System.out.println("UTIL -- writing POST data: "+urlPieces[1]);
             os.write(urlPieces[1].getBytes());
-            os.flush();           // Optional, getResponseCode will flush
+            //os.flush();           // Optional, getResponseCode will flush
             
             // Getting the response code will open the connection,
             // send the request, and read the HTTP response headers.
